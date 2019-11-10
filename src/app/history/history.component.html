@@ -1,0 +1,36 @@
+<section class="history-container">
+    <div class="history-options-container">
+        <div class="history-options">
+            <h2 [ngClass]="{'active': cat?.active}" *ngFor="let cat of leaveCategories;" (click)="changeActiveTab(cat?.id)">
+                {{cat?.name}}
+            </h2>
+        </div>
+        <h2 class="request">
+            <a [routerLink]="['/apply']">
+                Request Time Off
+            </a>
+        </h2>
+    </div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Posted</th>
+            <th scope="col">Status</th>
+            <th scope="col">Description</th>
+            <th scope="col">Date(s)</th>
+            <th scope="col">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let item of userLeave">
+            <th scope="row">{{item?.postedDate}}</th>
+            <td>{{item?.status}}</td>
+            <td>{{item?.selectedCategory}}</td>
+            <td>{{item?.startDate}} - {{item?.endDate}}</td>
+            <td>Cancel</td>
+        </tr>
+        </tbody>
+    </table>
+
+</section>
+

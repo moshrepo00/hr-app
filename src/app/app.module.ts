@@ -7,12 +7,17 @@ import {ApplicationComponent} from './application/application.component';
 import {SelectDropDownModule} from 'ngx-select-dropdown';
 import {FormsModule} from '@angular/forms';
 import {MyDatePickerModule} from 'mydatepicker';
+import {HistoryComponent} from './history/history.component';
+import {HttpClientModule} from '@angular/common/http';
+import {MomentModule} from 'angular2-moment';
+
 
 
 @NgModule({
     declarations: [
         AppComponent,
-        ApplicationComponent
+        ApplicationComponent,
+        HistoryComponent
     ],
     imports: [
         BrowserModule,
@@ -20,7 +25,9 @@ import {MyDatePickerModule} from 'mydatepicker';
         SelectDropDownModule,
         FormsModule,
         BrowserModule,
-        MyDatePickerModule
+        MyDatePickerModule,
+        HttpClientModule,
+        MomentModule,
     ],
     providers: [],
     bootstrap: [AppComponent]

@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {IMyDpOptions} from 'mydatepicker';
+import {DataService} from '../data.service';
 
 
 @Component({
@@ -50,7 +51,7 @@ export class ApplicationComponent implements OnInit {
     };
 
 
-    constructor() {
+    constructor(public data: DataService) {
     }
 
     ngOnInit() {
