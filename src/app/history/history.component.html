@@ -1,7 +1,7 @@
 <section class="history-container">
     <div class="history-options-container">
         <div class="history-options">
-            <h2 [ngClass]="{'active': cat?.active}" *ngFor="let cat of leaveCategories;" (click)="changeActiveTab(cat?.id)">
+            <h2 [ngClass]="{'active': cat?.active}" *ngFor="let cat of leaveCategories;" (click)="changeActiveTab(cat?.id, cat?.name)">
                 {{cat?.name}}
             </h2>
         </div>
@@ -22,7 +22,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let item of userLeave">
+        <tr *ngFor="let item of filteredLeave">
             <th scope="row">{{item?.postedDate}}</th>
             <td>{{item?.status}}</td>
             <td>{{item?.selectedCategory}}</td>

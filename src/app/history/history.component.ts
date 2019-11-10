@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {DataService} from '../data.service';
 import * as moment from 'moment';
 import {ActivatedRoute, Router} from '@angular/router';
+import {mergeMap} from 'rxjs/operators';
+import {observable, of} from 'rxjs';
 
 
 @Component({
@@ -14,27 +16,28 @@ export class HistoryComponent implements OnInit {
     leaveCategories = [];
     filteredCategories = [];
     userLeave = [];
+    filteredLeave = [];
 
     constructor(public data: DataService, private route: ActivatedRoute, private router: Router) {
     }
 
+    someaction() {
+
+    }
+
     ngOnInit() {
 
-        this.route.queryParams.subscribe(data => {
-            console.log('category update', data);
-            this.filteredCategories = [...this.leaveCategories];
-            // console.log([...this.leaveCategories]);
-            console.log(this.leaveCategories);
-        });
-
-        this.data.getLeaveInfo('type', 'categories')
-            .subscribe(leaveData => {
+        this.data.getLeaveInfo('type', 'categories').pipe(
+            mergeMap(leaveData => {
                 console.log(leaveData);
+                this.leaveCategories.push({
+                    id: 0,
+                    name: 'All',
+                });
                 leaveData.terms.forEach((leave, index) => {
                     const obj = {
                         id: leave.id,
                         name: leave.name,
-                        active: (index) ? false : true
                     };
                     this.leaveCategories.push(obj);
                 });
@@ -50,14 +53,38 @@ export class HistoryComponent implements OnInit {
                     };
                     this.userLeave.push(obj);
                 });
-            });
+                return this.route.queryParams;
+            })
+        ).subscribe((queryParams) => {
+            if (queryParams.category) {
+                console.log(this.leaveCategories);
+                const category = queryParams.category;
+                if (category !== 'All') {
+                    this.leaveCategories.forEach(item => {
+                        if (item.name === category) {
+                            item.active = true;
+                        }
+                    });
+                    this.filteredLeave = this.userLeave.filter(item => item.selectedCategory === category);
+                    console.log(this.userLeave);
+                    console.log(this.filteredLeave);
+                } else {
+                    const allObj = this.leaveCategories.find(item => item.name === 'All');
+                    allObj.active = true;
+                    this.filteredLeave = [...this.userLeave];
+                }
+            } else {
+                this.router.navigate(['.'], {relativeTo: this.route, queryParams: {category: 'all'}});
+            }
+        });
     }
 
-    test() {
-        this.data.getLeaveInfo('type', 'categories').subscribe(data => console.log(data));
+
+    updateQueryParams() {
+
     }
 
-    changeActiveTab(id: number) {
+    changeActiveTab(id: number, name: string) {
         this.leaveCategories.forEach(leave => {
             if (leave.id === id) {
                 leave.active = true;
@@ -65,6 +92,8 @@ export class HistoryComponent implements OnInit {
                 leave.active = false;
             }
         });
+
+        this.router.navigate(['.'], {relativeTo: this.route, queryParams: {category: name}});
     }
 
 }
