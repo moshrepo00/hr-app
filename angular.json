@@ -87,7 +87,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "../node_modules/ngx-select-dropdown/dist/assets/style.css"
             ],
             "scripts": []
           }
@@ -118,6 +119,7 @@
           }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "hr-app"
 }

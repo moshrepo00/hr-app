@@ -1,0 +1,119 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.leave-container {
+  max-width: 1200px;
+  background: #fff;
+  border-radius: 5px;
+  margin: 50px auto 0;
+  position: relative;
+
+  h1 {
+    text-align: center;
+    border-bottom: 1px solid #3e4d5e;
+    color: #3e4d5e;
+    padding: 25px;
+    font-size: 25px;
+  }
+
+  h2 {
+    font-size: 20px;
+    padding: 10px 0 0 30px;
+  }
+
+  .date-picker {
+    font-size: 16px;
+    display: flex;
+    width: 70%;
+    padding-top: 10px;
+  }
+
+  .date-picker-item {
+    padding-left: 30px;
+    flex-grow: 1;
+  }
+
+  .dropdown {
+    //width: 10%;
+    &::ng-deep {
+      li:hover {
+        background: #337ab7;
+        //padding: 3px 0 !important;
+        //border-bottom: 1px solid #3e4d5e;
+        //text-align: center;
+      }
+
+      .ngx-dropdown-button {
+        padding: 10px !important;
+      }
+    }
+  }
+
+  .leave-text-section {
+    .options-container {
+      display: flex;
+    }
+
+    .leave-text-section-options {
+      position: relative;
+      padding-left: 30px;
+      width: 50%;
+    }
+
+    .input-container {
+      display: flex;
+      flex-direction: column;
+    }
+
+    textarea {
+      margin: 10px 0;
+      width: 100%;
+    }
+  }
+
+  .time-duration-section {
+    display: flex;
+    flex-direction: column;
+    padding-left: 50px;
+
+    .input-container {
+      display: flex;
+    }
+
+    input[type="radio"] {
+      display: none;
+    }
+
+    input[type="radio"] + label {
+      position: relative;
+
+      &::before {
+        content: '';
+        width: 10px;
+        position: absolute;
+        height: 10px;
+        border-radius: 50%;
+        border: 1px solid #3e4d5e;
+        left: -20px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    }
+
+    input[type="radio"]:checked + label {
+      &::after {
+        content: "";
+        width: 8px;
+        position: absolute;
+        height: 8px;
+        border-radius: 50%;
+        left: -18px;
+        background: #3e4d5e;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    }
+  }
+}

@@ -1,0 +1,89 @@
+<section class="leave-container">
+    <h1>
+        Apply for leave
+    </h1>
+
+    <h2>
+        Take time off
+    </h2>
+
+    <div class="date-picker">
+        <div class="leave-reason date-picker-item">
+            <div>
+                I'm taking
+            </div>
+            <div class="dropdown">
+                <ngx-select-dropdown (change)="selectionChanged($event)" [(ngModel)]="dataModel" [config]="config" [options]="dropdownOptions"></ngx-select-dropdown>
+            </div>
+        </div>
+        <div class="start-date date-picker-item">
+            <div>
+                Start Date
+            </div>
+            <div class="dropdown">
+                <my-date-picker name="mydate" [options]="myDatePickerOptions"
+                        [(ngModel)]="startDate" placeholder="Start Date" required></my-date-picker>
+            </div>
+        </div>
+        <div class="end-date date-picker-item">
+            <div>
+                End Date
+            </div>
+            <div class="dropdown">
+                <my-date-picker name="mydate" [options]="myDatePickerOptions"
+                        [(ngModel)]="endDate" placeholder="End Date" required></my-date-picker>
+            </div>
+        </div>
+    </div>
+
+    <div class="leave-text-section">
+        <h2>
+            Why am I taking time off?
+        </h2>
+        <div class="options-container">
+            <div class="leave-text-section-options">
+                <textarea rows="7"></textarea>
+            </div>
+            <div class="time-duration-section">
+                <div class="input-container">
+                    <input
+                            type="radio"
+                            id="single"
+                            name="time"
+                            value="single"
+                            [(ngModel)]="leaveDuration"
+                    >
+                    <label for="single">
+                        Request a single day off
+                    </label>
+                </div>
+                <div class="input-container">
+                    <input
+                            type="radio"
+                            id="half"
+                            name="time"
+                            value="half"
+                            [(ngModel)]="leaveDuration"
+                    >
+                    <label for="half">
+                        Request half a day off
+                    </label>
+                </div>
+                <div class="input-container">
+                    <input
+                            type="radio"
+                            id="custom"
+                            name="time"
+                            value="custom"
+                            [(ngModel)]="leaveDuration"
+                    >
+                    <label for="custom">
+                        Request Custom Hours
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
