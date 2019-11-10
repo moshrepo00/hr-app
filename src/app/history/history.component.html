@@ -24,10 +24,14 @@
         <tbody>
         <tr *ngFor="let item of filteredLeave">
             <th scope="row">{{item?.postedDate}}</th>
-            <td>{{item?.status}}</td>
+            <td>
+                <button class="btn btn-secondary">{{item?.status}}</button>
+            </td>
             <td>{{item?.selectedCategory}}</td>
             <td>{{item?.startDate}} - {{item?.endDate}}</td>
-            <td>Cancel</td>
+            <td (click)="delete(item?.targetId)">
+                <button class="btn btn-danger">Cancel</button>
+            </td>
         </tr>
         </tbody>
     </table>

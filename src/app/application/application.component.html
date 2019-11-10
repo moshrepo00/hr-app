@@ -1,10 +1,13 @@
-<section class="leave-container">
-    <h1>
-        Apply for leave
-    </h1>
+<section class="leave-container" *ngIf="dropdownOptions?.length">
+    <div class="apply">
+        <h1>
+            Apply for Leave
+        </h1>
+    </div>
 
     <h2>
         Take time off
+        <a class="app-history" [routerLink]="['/history']">(Click Here to view your application history)</a>
     </h2>
 
     <div class="date-picker">
@@ -22,7 +25,7 @@
             </div>
             <div class="dropdown">
                 <my-date-picker name="mydate" [options]="myDatePickerOptions"
-                        [(ngModel)]="startDate" placeholder="Start Date" required></my-date-picker>
+                        placeholder="Start Date" (dateChanged)="onDateChanged($event, 'start')" required></my-date-picker>
             </div>
         </div>
         <div class="end-date date-picker-item">
@@ -31,12 +34,13 @@
             </div>
             <div class="dropdown">
                 <my-date-picker name="mydate" [options]="myDatePickerOptions"
-                        [(ngModel)]="endDate" placeholder="End Date" required></my-date-picker>
+                        placeholder="End Date" (dateChanged)="onDateChanged($event, 'end')" required></my-date-picker>
             </div>
         </div>
     </div>
 
-    <div class="leave-text-section">
+    <div class=" leave-text-section
+                ">
         <h2>
             Why am I taking time off?
         </h2>
@@ -83,6 +87,11 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <div class="button-container">
+        <button type="button" class="btn btn-outline-danger" (click)="reqLeave()">Request Time Off</button>
+
     </div>
 
 </section>

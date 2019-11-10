@@ -1,3 +1,5 @@
+@import '~bootstrap/dist/css/bootstrap.css';
+
 * {
   margin: 0;
   padding: 0;
@@ -16,11 +18,33 @@
     color: #3e4d5e;
     padding: 25px;
     font-size: 25px;
+    font-weight: bold;
+  }
+
+  .apply {
+    //position: relative;
+
+    //.history {
+    //  position: absolute;
+    //  left: 30px;
+    //  top: 50%;
+    //  width: 10px;
+    //  height: 10px;
+    //
+    //  &::before {
+    //    content: '';
+    //    transform: rotate(-45deg) translateY(-50%);
+    //    border-top: 1px solid blue;
+    //    border-left: 1px solid blue;
+    //  }
+    //}
   }
 
   h2 {
     font-size: 20px;
     padding: 10px 0 0 30px;
+    color: #3e4d5e;
+    font-weight: bold;
   }
 
   .date-picker {
@@ -117,4 +141,22 @@
       }
     }
   }
+}
+
+
+.button-container {
+  border-top: 1px solid #3e4d5e;
+  margin-top: 20px;
+  padding: 20px;
+
+  button {
+    margin-left: auto;
+    display: block;
+  }
+}
+
+.app-history {
+  font-size: 16px;
+  margin-left: 10px;
+  text-decoration: underline;
 }
