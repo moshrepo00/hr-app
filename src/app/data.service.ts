@@ -10,7 +10,7 @@ import * as moment from 'moment';
 export class DataService {
     // backendUrl = 'http://local.hr-backend.com';
     backendUrl = 'https://master-7rqtwti-gtjxwlhcnataw.au.platformsh.site';
-    
+
 
     getCurrencyConversionData(): Observable<any> {
         return this.http.get(this.backendUrl + '/currency');

@@ -130,13 +130,14 @@
     input[type="radio"]:checked + label {
       &::after {
         content: "";
-        width: 8px;
+        width: 6px;
         position: absolute;
-        height: 8px;
+        height: 6px;
         border-radius: 50%;
         left: -18px;
         background: #3e4d5e;
         top: 50%;
+        -webkit-transform: translateY(-50%);
         transform: translateY(-50%);
       }
     }
